@@ -1,22 +1,713 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Josh Bennett — Creative Content Producer</title>
-    <meta
-      name="description"
-      content="Josh Bennett — creative producer turned brand storyteller, directing unforgettable social-first content for global brands."
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&family=Kanit:wght@300;400;500;600;700;800;900&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Josh — Creative Producer</title>
+<meta name="description" content="Creative producer. Sport, gaming and culture — formats, live events and social-first film." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+
+<!--
+  ============================================================
+  JOSH — PORTFOLIO v7
+  Single file. No build. Open in a browser.
+
+  MEDIA: /media folder next to this file.
+    - project clips: 6-10s cutdowns, ~1080p H.264 .mp4 + .jpg poster
+    - featured clips can be longer
+    - photo of you: media/josh.jpg
+  Fill src / poster in WORK. Blank = designed placeholder.
+
+  // EDIT = your details   // CHECK = confirm before publishing
+  ============================================================
+-->
+
+<style>
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;padding:0;width:100%}
+html{scroll-behavior:smooth}
+img,video{display:block;max-width:100%}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+a{color:inherit;text-decoration:none}
+ul{margin:0;padding:0;list-style:none}
+
+:root{
+  --ink:#08080A;
+  --ink2:#111116;
+  --paper:#F4F1EA;
+  --acid:#DFFF4F;
+  --blue:#2340FF;
+  --flame:#FF4A1C;
+  --dim:rgba(244,241,234,.5);
+  --line:rgba(244,241,234,.13);
+  --d:'Archivo Black',Impact,sans-serif;
+  --b:'Archivo',system-ui,sans-serif;
+  --m:'IBM Plex Mono',ui-monospace,monospace;
+  --s:'Instrument Serif',Georgia,serif;
+  --e:cubic-bezier(.19,1,.22,1);
+  --pad:clamp(16px,4vw,52px);
+}
+body{background:var(--ink);color:var(--paper);font-family:var(--b);line-height:1.45;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden}
+body.lock{overflow:hidden}
+
+.grain{position:fixed;inset:-50%;z-index:1;pointer-events:none;opacity:.05;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* kinetic text reveal */
+.rv{display:inline-block;overflow:hidden;vertical-align:bottom}
+.rv > i{display:inline-block;font-style:inherit;transform:translateY(110%);
+  transition:transform .9s var(--e)}
+.in .rv > i{transform:none}
+
+/* INTRO */
+#intro{position:fixed;inset:0;z-index:200;background:var(--blue);display:grid;place-items:center;
+  transition:transform .9s var(--e);}
+#intro.done{transform:translateY(-101%)}
+#intro b{font-family:var(--d);font-size:clamp(34px,7.5vw,88px);color:var(--acid);letter-spacing:-.02em;
+  line-height:1.05;text-align:center}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:90;display:flex;justify-content:space-between;
+  align-items:center;padding:14px var(--pad);transition:transform .5s var(--e);mix-blend-mode:difference}
+.nav.hide{transform:translateY(-120%)}
+.nav__mark{display:flex;flex-direction:column;line-height:1.05}
+.nav__mark b{font-family:var(--d);font-size:17px;letter-spacing:-.02em}
+.nav__mark span{font-family:var(--m);font-size:9px;letter-spacing:.14em;text-transform:uppercase;opacity:.6}
+.nav__set{display:flex;gap:clamp(12px,2.2vw,26px);align-items:center}
+.nav__set a{font-family:var(--m);font-size:11px;letter-spacing:.16em;text-transform:uppercase}
+.nav__b{display:none;width:32px;height:20px;position:relative}
+.nav__b i{position:absolute;left:0;width:100%;height:1.5px;background:currentColor;transition:.35s var(--e)}
+.nav__b i:nth-child(1){top:3px}.nav__b i:nth-child(2){bottom:3px}
+body.menu .nav__b i:nth-child(1){top:9px;transform:rotate(45deg)}
+body.menu .nav__b i:nth-child(2){bottom:9px;transform:rotate(-45deg)}
+.menu{position:fixed;inset:0;z-index:80;background:var(--blue);color:var(--paper);display:flex;
+  flex-direction:column;justify-content:center;padding:var(--pad);
+  clip-path:circle(0% at 92% 4%);transition:clip-path .8s var(--e);pointer-events:none}
+body.menu .menu{clip-path:circle(150% at 92% 4%);pointer-events:auto}
+.menu a{font-family:var(--d);font-size:clamp(38px,11vw,100px);line-height:1.04;letter-spacing:-.02em;
+  opacity:0;transform:translateY(24px);transition:.5s var(--e)}
+.menu a:hover{color:var(--acid)}
+body.menu .menu a{opacity:1;transform:none}
+body.menu .menu a:nth-child(1){transition-delay:.2s}
+body.menu .menu a:nth-child(2){transition-delay:.27s}
+body.menu .menu a:nth-child(3){transition-delay:.34s}
+.menu__f{margin-top:auto;padding-top:30px;display:flex;flex-wrap:wrap;gap:10px 24px;
+  font-family:var(--m);font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+
+/* ============ HERO: wall + minimal type ============ */
+.hero{position:relative;height:100svh;overflow:hidden}
+.wall{position:absolute;inset:0;display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:10px}
+.wall__c{display:flex;flex-direction:column;gap:10px;will-change:transform}
+.wall__c:nth-child(1){animation:up 46s linear infinite}
+.wall__c:nth-child(2){animation:dn 58s linear infinite}
+.wall__c:nth-child(3){animation:up 68s linear infinite}
+.wall__c:nth-child(4){animation:dn 52s linear infinite}
+@keyframes up{from{transform:translateY(0)}to{transform:translateY(-50%)}}
+@keyframes dn{from{transform:translateY(-50%)}to{transform:translateY(0)}}
+.wall__t{position:relative;aspect-ratio:9/16;border-radius:6px;overflow:hidden;flex:none;background:var(--ink2);
+  display:grid;place-items:center;padding:0 10px;text-align:center;font-family:var(--m);font-size:9px;
+  letter-spacing:.14em;text-transform:uppercase;color:rgba(244,241,234,.3)}
+.wall__t video,.wall__t img{width:100%;height:100%;object-fit:cover}
+.hero__v{position:absolute;inset:0;z-index:2;pointer-events:none;
+  background:linear-gradient(180deg,rgba(8,8,10,.72) 0%,rgba(8,8,10,.05) 26%,rgba(8,8,10,.06) 68%,rgba(8,8,10,.9) 100%)}
+.hero__top{position:absolute;top:0;left:0;right:0;z-index:3;padding:64px var(--pad) 0;
+  display:flex;justify-content:space-between;gap:20px;font-family:var(--m);font-size:11px;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+.hero__bot{position:absolute;bottom:0;left:0;right:0;z-index:3;padding:0 var(--pad) clamp(22px,4vw,44px);
+  display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.hero__claim{font-family:var(--d);font-size:clamp(38px,8.4vw,116px);line-height:.9;letter-spacing:-.035em;margin:0}
+.hero__claim em{font-family:var(--s);font-style:italic;font-weight:400;color:var(--acid);letter-spacing:-.01em}
+.hero__scroll{font-family:var(--m);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--dim);display:flex;align-items:center;gap:9px}
+.hero__scroll b{width:26px;height:26px;border-radius:50%;background:var(--acid);color:var(--ink);
+  display:grid;place-items:center;font-size:12px;animation:bob 1.8s var(--e) infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
+
+/* ============ STATEMENT (light) ============ */
+.say{background:var(--paper);color:var(--ink);padding:clamp(70px,13vw,180px) var(--pad)}
+.say__t{font-family:var(--d);font-size:clamp(30px,6.4vw,86px);line-height:1.02;letter-spacing:-.035em;
+  margin:0;max-width:16ch}
+.say__t em{font-family:var(--s);font-style:italic;font-weight:400;letter-spacing:-.01em}
+.say__t u{text-decoration:none;background:var(--blue);color:var(--paper);padding:0 .12em;border-radius:3px}
+.say__sub{margin:clamp(26px,3.6vw,44px) 0 0;max-width:56ch;font-size:clamp(15px,1.7vw,19px);opacity:.72}
+
+/* marquee strip */
+.strip{background:var(--acid);color:var(--ink);padding:14px 0;overflow:hidden;border-top:2px solid var(--ink);border-bottom:2px solid var(--ink)}
+.strip__t{display:flex;gap:38px;white-space:nowrap;width:max-content;animation:slide 26s linear infinite;
+  font-family:var(--d);font-size:clamp(15px,2vw,26px);letter-spacing:-.02em;text-transform:uppercase}
+@keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ============ FEATURED (full bleed) ============ */
+.feat{position:relative;min-height:92svh;display:flex;align-items:flex-end;overflow:hidden;background:var(--ink2)}
+.feat__m{position:absolute;inset:0;transform:scale(1.12);transition:transform 1.4s var(--e)}
+.feat.in .feat__m{transform:scale(1)}
+.feat__m video,.feat__m img{width:100%;height:100%;object-fit:cover}
+.feat__ph{position:absolute;inset:0;display:grid;place-items:center;
+  background:linear-gradient(135deg,var(--blue),#0a0a20 70%)}
+.feat__ph span{font-family:var(--m);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+.feat__v{position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,8,10,.35),transparent 40%,rgba(8,8,10,.92))}
+.feat__c{position:relative;z-index:3;width:100%;padding:var(--pad);display:flex;align-items:flex-end;
+  justify-content:space-between;gap:26px;flex-wrap:wrap}
+.feat__n{font-family:var(--m);font-size:11px;letter-spacing:.2em;color:var(--acid);margin:0 0 10px}
+.feat__t{font-family:var(--d);font-size:clamp(30px,6.6vw,88px);line-height:.92;letter-spacing:-.035em;margin:0}
+.feat__meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px;max-width:46ch}
+.feat__meta em{font-family:var(--m);font-style:normal;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;
+  border:1px solid rgba(244,241,234,.34);border-radius:3px;padding:4px 7px}
+.feat__go{font-family:var(--m);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  background:var(--acid);color:var(--ink);padding:14px 24px;border-radius:99px;white-space:nowrap;transition:.25s}
+.feat__go:hover{background:var(--paper)}
+
+/* body-of-work feature: hero clip + scope line + supporting strip */
+.feat__scope{font-family:var(--m);font-size:12.5px;letter-spacing:.02em;color:var(--dim);
+  margin:14px 0 0;max-width:48ch;line-height:1.5}
+.feat__strip{display:flex;gap:7px;margin-top:20px;flex-wrap:wrap}
+.feat__mini{width:60px;aspect-ratio:9/16;border-radius:6px;overflow:hidden;position:relative;
+  flex:none;background:var(--ink2);transition:transform .3s var(--e)}
+.feat__mini:hover{transform:translateY(-5px)}
+.feat__mini img,.feat__mini video{width:100%;height:100%;object-fit:cover}
+.feat__mini b{position:absolute;inset:0;display:grid;place-items:center;padding:4px;text-align:center;
+  font-family:var(--m);font-weight:500;font-size:7px;letter-spacing:.08em;text-transform:uppercase;
+  color:rgba(244,241,234,.55);background:linear-gradient(150deg,#1d1d24,#0e0e12)}
+
+/* ============ CHAPTERS ============ */
+.work{position:relative;z-index:3}
+.chap{padding:clamp(30px,4.4vw,60px) 0;scroll-margin-top:70px}
+.chap__h{position:sticky;top:0;z-index:6;background:var(--ink);padding:16px var(--pad) 14px;
+  display:flex;align-items:baseline;gap:16px;border-bottom:1px solid var(--line)}
+.chap__n{font-family:var(--m);font-size:11px;letter-spacing:.18em;color:var(--acid)}
+.chap__t{font-family:var(--d);font-size:clamp(19px,2.6vw,32px);letter-spacing:-.03em;margin:0}
+.chap__s{font-size:13px;color:var(--dim);margin:0 0 0 auto;max-width:40ch;text-align:right}
+.rail{display:flex;gap:clamp(8px,1vw,14px);overflow-x:auto;scroll-snap-type:x mandatory;
+  padding:20px var(--pad) 8px;scrollbar-width:none}
+.rail::-webkit-scrollbar{display:none}
+.card{flex:0 0 clamp(184px,20vw,250px);text-align:left;scroll-snap-align:start;padding:0;
+  opacity:0;transform:translateY(26px);transition:opacity .7s var(--e),transform .7s var(--e)}
+.card.in{opacity:1;transform:none}
+.card__w{position:relative;aspect-ratio:9/16;border-radius:10px;overflow:hidden;background:var(--ink2);
+  transition:transform .5s var(--e)}
+.card:hover .card__w{transform:translateY(-8px)}
+.card__w video,.card__w img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.card__ph{position:absolute;inset:0;display:grid;place-content:center;gap:7px;text-align:center;padding:18px}
+.card:nth-child(3n) .card__ph{background:linear-gradient(150deg,var(--blue),#0b0b1e)}
+.card:nth-child(3n+1) .card__ph{background:linear-gradient(150deg,#1d1d24,#0e0e12)}
+.card:nth-child(3n+2) .card__ph{background:linear-gradient(150deg,var(--flame),#2a0b04)}
+.card__ph b{font-family:var(--m);font-weight:500;font-size:9px;letter-spacing:.16em;text-transform:uppercase;opacity:.75}
+.card__ph i{font-family:var(--d);font-style:normal;font-size:17px;line-height:1.05;letter-spacing:-.02em}
+.card__v{position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,transparent 45%,rgba(0,0,0,.85))}
+.card__d{position:absolute;top:8px;right:8px;z-index:3;font-family:var(--m);font-size:9.5px;
+  background:rgba(0,0,0,.55);padding:3px 6px;border-radius:3px}
+.card__i{position:absolute;left:0;right:0;bottom:0;z-index:3;padding:12px}
+.card__c{font-family:var(--m);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--acid);margin:0 0 3px}
+.card__t{font-family:var(--d);font-size:clamp(14px,1.3vw,18px);line-height:1.04;letter-spacing:-.025em;margin:0}
+
+/* ============ STUDIO ============ */
+.studio{padding:clamp(60px,9vw,130px) var(--pad);background:var(--paper);color:var(--ink)}
+.studio__g{display:block}
+.studio__p{position:relative;width:100%;aspect-ratio:16/7;border-radius:14px;overflow:hidden;
+  background:#ddd8ce;margin-bottom:clamp(28px,4vw,52px)}
+.studio__p img{width:100%;height:100%;object-fit:cover;object-position:22% 50%}
+.studio__p span{display:none;position:absolute;inset:0;place-items:center;text-align:center;padding:18px;
+  font-family:var(--m);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(8,8,10,.5)}
+.studio__p.empty span{display:grid}
+.studio__b{display:block}
+@media (max-width:820px){ .studio__p{aspect-ratio:4/3} }
+.studio__x{font-family:var(--d);font-size:clamp(26px,4.6vw,58px);line-height:.98;letter-spacing:-.035em;margin:0 0 22px}
+.studio__x em{font-family:var(--s);font-style:italic;font-weight:400;color:var(--blue)}
+.studio__b p{margin:0 0 16px;font-size:clamp(15px,1.6vw,18px);opacity:.8;max-width:56ch}
+.caps{display:flex;flex-wrap:wrap;gap:6px;margin-top:26px}
+.caps li{font-family:var(--m);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+  border:1px solid rgba(8,8,10,.2);border-radius:99px;padding:8px 13px;color:rgba(8,8,10,.6)}
+.scale{font-family:var(--m);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  color:rgba(8,8,10,.5);margin:26px 0 0}
+.quote{margin:clamp(34px,5vw,60px) 0 0;padding-top:clamp(20px,3vw,32px);border-top:1px solid rgba(8,8,10,.18);max-width:50ch}
+.quote p{font-family:var(--s);font-style:italic;font-size:clamp(19px,2.5vw,29px);line-height:1.28;margin:0 0 10px}
+.quote cite{font-family:var(--m);font-style:normal;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(8,8,10,.55)}
+
+/* ============ END ============ */
+.end{background:var(--blue);color:var(--paper);padding:clamp(60px,9vw,130px) var(--pad);text-align:center}
+.end__b{display:block;font-family:var(--d);font-size:clamp(40px,11.5vw,160px);line-height:.85;letter-spacing:-.04em;transition:.3s}
+.end__b:hover{color:var(--acid)}
+.end__r{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 24px;margin-top:28px;
+  font-family:var(--m);font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+
+/* CURSOR */
+.cur{position:fixed;top:0;left:0;z-index:150;width:70px;height:70px;border-radius:50%;background:var(--acid);
+  color:var(--ink);display:grid;place-items:center;font-family:var(--m);font-size:9.5px;letter-spacing:.14em;
+  text-transform:uppercase;pointer-events:none;transform:translate(-50%,-50%) scale(0);transition:transform .3s var(--e)}
+.cur.on{transform:translate(-50%,-50%) scale(1)}
+@media (hover:none){.cur{display:none}}
+
+/* MODAL */
+.mod{position:fixed;inset:0;z-index:120;background:rgba(6,6,8,.93);backdrop-filter:blur(10px);
+  display:flex;align-items:center;justify-content:center;padding:clamp(12px,3vw,42px);
+  opacity:0;visibility:hidden;transition:.4s var(--e)}
+.mod.open{opacity:1;visibility:visible}
+.mod__p{position:relative;display:grid;grid-template-columns:auto minmax(260px,400px);background:var(--ink2);
+  border-radius:14px;overflow:hidden;max-width:980px;width:100%;max-height:88vh;
+  transform:translateY(20px) scale(.97);transition:transform .5s var(--e)}
+.mod.open .mod__p{transform:none}
+.mod__v{background:#000;display:flex;align-items:center}
+.mod__v video{width:100%;max-height:88vh;aspect-ratio:9/16;object-fit:contain}
+.mod__v.wide video{aspect-ratio:16/9}
+.mod__none{aspect-ratio:9/16;width:280px;max-width:42vw;display:grid;place-items:center;gap:8px;
+  text-align:center;color:var(--dim);font-size:13px}
+.mod__t{padding:clamp(20px,3vw,34px);overflow:auto}
+.mod__c{font-family:var(--m);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--acid);margin:0}
+.mod__t h3{font-family:var(--d);font-size:26px;letter-spacing:-.03em;margin:9px 0 13px;line-height:1.03}
+.mod__r{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:4px}
+.mod__r em{font-family:var(--m);font-style:normal;font-size:9px;letter-spacing:.1em;text-transform:uppercase;
+  border:1px solid var(--line);border-radius:3px;padding:3px 6px;color:var(--dim)}
+.mod__t dt{font-family:var(--m);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);margin-top:17px}
+.mod__t dd{margin:5px 0 0;font-size:14.5px;opacity:.92}
+.mod__sys{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
+.mod__sys li{font-size:11.5px;border:1px solid var(--line);border-radius:99px;padding:5px 10px;color:var(--dim)}
+.mod__x{position:absolute;top:10px;right:10px;z-index:4;width:36px;height:36px;border-radius:50%;
+  background:rgba(0,0,0,.6);display:grid;place-items:center;transition:.25s}
+.mod__x:hover{background:var(--acid);color:var(--ink)}
+
+/* RESPONSIVE */
+@media (max-width:900px){
+  .nav__set a{display:none}
+  .nav__b{display:block}
+  .wall{grid-template-columns:repeat(2,1fr)}
+  .wall__c:nth-child(n+3){display:none}
+  .chap__s{display:none}
+  .card{flex-basis:60vw}
+  .mod__p{grid-template-columns:1fr;overflow:auto}
+  .mod__none{max-width:none;width:100%}
+  .mod__v video{max-height:54vh}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .card,.rv > i{opacity:1!important;transform:none!important}
+}
+:focus-visible{outline:2px solid var(--acid);outline-offset:3px}
+</style>
+</head>
+
+<body>
+<div class="grain"></div>
+<div id="intro"><b>HI, I&rsquo;M<br>JOSH</b></div>
+<div class="cur" id="cur">View</div>
+
+<nav class="nav" id="nav">
+  <a class="nav__mark" href="#top"><b>Josh Bennett</b><span>Creative Producer</span></a>
+  <div class="nav__set">
+    <a href="#work">Work</a><a href="#studio">Studio</a><a href="#contact">Contact</a>
+    <button class="nav__b" id="burger" aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
+  </div>
+</nav>
+
+<div class="menu" id="menu">
+  <a href="#work">Work</a><a href="#studio">Studio</a><a href="#contact">Contact</a>
+  <div class="menu__f">
+    <span>UK</span>
+    <a href="mailto:bennett.josh90@gmail.com">Email</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="wall" id="wall" aria-hidden="true"></div>
+  <div class="hero__v"></div>
+  <div class="hero__top">
+    <span>Creative producer</span>
+    <span>Sport &middot; Gaming &middot; Culture</span>
+  </div>
+  <div class="hero__bot">
+    <h1 class="hero__claim" id="claim"></h1>
+    <a class="hero__scroll" href="#work"><b>&darr;</b> 16 projects</a>
+  </div>
+</header>
+
+<!-- STATEMENT -->
+<section class="say" id="say">
+  <h2 class="say__t" id="sayT"></h2>
+  <p class="say__sub">Six years in-house making work for O2 and Virgin Media &mdash; England Rugby and the
+    Red Roses, Baller League UK, and game launches with Xbox, 2K, Hoyoverse, Konami and Epic. Briefs
+    come in loose. Finished films go out.</p>
+</section>
+
+<div class="strip"><div class="strip__t" id="strip"></div></div>
+
+<!-- FEATURED -->
+<section class="feat" id="fA"></section>
+<section class="feat feat--body" id="fB"></section>
+<section class="feat feat--body" id="fC"></section>
+
+<!-- WORK -->
+<div class="work" id="work"><div id="chapters"></div></div>
+
+<!-- STUDIO -->
+<section class="studio" id="studio">
+  <div class="studio__g">
+    <div class="studio__p">
+      <!-- EDIT: media/josh.jpg — on set beats a headshot -->
+      <img src="media/josh.jpg" alt="Josh on set" onerror="this.style.display='none';this.parentNode.classList.add('empty')">
+      <span>Add photo<br>media/josh.jpg</span>
+    </div>
+    <div class="studio__b">
+      <h2 class="studio__x">One person. <em>Every role.</em></h2>
+      <p>Most of this was concepted, pitched, shot, cut, graded and animated by me. That&rsquo;s not a
+         boast about being busy &mdash; it&rsquo;s why the work moves fast and holds together. No handoffs,
+         no edit queue, no drift between the idea that got signed off and the film that ships.</p>
+      <p>I build formats rather than one-offs: a structure with its own graphic language a brand can run
+         again next week with different talent. Same job whether it&rsquo;s a World Cup, a game launch or
+         a drag queen with an opinion.</p>
+      <ul class="caps">
+        <li>Concept</li><li>Format design</li><li>Production</li><li>Direction</li><li>Talent</li>
+        <li>Shoot</li><li>Edit</li><li>Motion</li><li>Grade</li><li>Systems</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer class="end" id="contact">
+  <a class="end__b" href="mailto:bennett.josh90@gmail.com">LET&rsquo;S TALK</a>
+  <div class="end__r">
+    <span>UK</span><span>Available for work</span>
+  </div>
+</footer>
+
+<div class="mod" id="mod">
+  <div class="mod__p" role="dialog" aria-modal="true" tabindex="-1" id="panel">
+    <button class="mod__x" id="close" aria-label="Close">&#10005;</button>
+    <div class="mod__v" id="mv"></div>
+    <div class="mod__t" id="mt"></div>
+  </div>
+</div>
+
+<script>
+/* ================= DATA ================= */
+const CHAPTERS = [
+ {id:"gaming",n:"01",title:"Gaming & esports",sub:"Launches and live events with Xbox, 2K, Hoyoverse, Konami, Epic and Riot Games.",
+  ids:["showdown","worlds","wwe26","joelbeya","undisputed","zzz","mgs"]},
+ {id:"sport",n:"02",title:"Sport",
+  sub:"England Rugby and the Red Roses — one graphics language carried across the men's and women's game.",
+  ids:["finish","blindrank","wrwc"]},
+ {id:"ballerleague",n:"03",title:"Baller League",
+  sub:"A season-long O2 sponsorship — talent formats, matchday coverage, design and templated builds.",
+  ids:["mgrcomp","deportrio","matchday","gameday4","prioritytickets"]},
+ {id:"culture",n:"04",title:"Music & culture",sub:"Artists, drag, and an arena that never stops.",
+  ids:["trixie","yungblud","o2recap","wargasm"]},
+ {id:"systems",n:"05",title:"Systems & craft",sub:"The engines behind the output.",
+  ids:["ballersys","gameday4"]}
+];
+
+/* ============ HERO WALL ============
+   Independent of WORK — swap these freely without affecting
+   any project card or case study. 16 tiles = 4 columns of 4. */
+const WALL = [
+  {src:"media/showdown.mp4",       poster:"media/showdown.jpg",       tag:"Showdown at The O2"},
+  {src:"media/tackle.mp4",         poster:"media/tackle.jpg",         tag:"10 Second Tackle"},
+  {src:"media/worlds.mp4",         poster:"media/worlds.jpg",         tag:"Worlds 2024"},
+  {src:"media/wall_deportrio.mp4", poster:"media/wall_deportrio.jpg", tag:"Deportrio MD3 Reaction"},
+
+  {src:"media/forza.mp4",          poster:"media/forza.jpg",          tag:"Forza Launch"},
+  {src:"media/trixie.mp4",         poster:"media/trixie.jpg",         tag:"Toot or Boot"},
+  {src:"media/wall_wwe24.mp4",     poster:"media/wall_wwe24.jpg",     tag:"WWE 2K24"},
+  {src:"media/blindrank.mp4",      poster:"media/blindrank.jpg",      tag:"Blind Ranking"},
+
+  {src:"media/wrwc.mp4",           poster:"media/wrwc.jpg",           tag:"WRWC"},
+  {src:"media/baller.mp4",         poster:"media/baller.jpg",         tag:"Manager Playlists"},
+  {src:"media/wall_engfiji.mp4",   poster:"media/wall_engfiji.jpg",   tag:"England v Fiji"},
+  {src:"media/yungblud.mp4",       poster:"media/yungblud.jpg",       tag:"O2 Asks"},
+
+  {src:"media/finish.mp4",         poster:"media/finish.jpg",         tag:"Finish The Sentence"},
+  {src:"media/wall_munya.mp4",     poster:"media/wall_munya.jpg",     tag:"Munya — WWE Q&A"},
+  {src:"media/wall_undisputed.mp4",poster:"media/wall_undisputed.jpg",tag:"Undisputed × Gamepad"},
+  {src:"media/wwe26.mp4",          poster:"media/wwe26.jpg",          tag:"WWE 2K26"}
+];
+
+const WORK = [
+ {id:"tackle",year:"2025",client:"O2 × England Rugby",title:"10 Second Tackle",
+  roles:["Concept","Format design","Talent direction","Shoot","Edit","Motion"],dur:"0:44",src:"media/tackle.mp4",full:"media/tackle_full.mp4",poster:"media/tackle.jpg",
+  idea:"A quiz with a clock running. Name three cities, recite the anthem, name a teammate beginning with S — go.",
+  made:"Built around built-in jeopardy so the comedy comes from the pressure, not the script. One of several formats created from limited access time with the England men's squad across separate Six Nations fixtures — all carried by a single consistent graphics package, so a short window with the players produces a full run of content.",
+  note:"Repeatable weekly, shot in a single player session."},
+
+ {id:"showdown",year:"2024",client:"O2 × Epic Games",title:"Showdown at The O2",
+  roles:["Concept","Direction","Shoot","Edit","Motion"],dur:"0:56",src:"media/showdown.mp4",full:"media/showdown_full.mp4",poster:"media/showdown.jpg",
+  idea:"One night, one arena, one shot at the film.",
+  made:"A huge tournament hosted at The O2 in collaboration with Epic Games, bringing together major creators — Angry Ginge, Aitch, AJ Tracey, Vikkstar — alongside Fortnite pro players and some lucky fans to see who would be crowned winner. Shot the room end to end and cut to an agony-to-glory rhythm landing on the win.",
+  note:"Fortnite Remix Chapter 2 launch event."},
+
+ {id:"worlds",year:"2024",client:"The O2 × Riot Games",title:"2024 League of Legends World Championship",
+  roles:["Concept","Shoot","Edit","Motion"],dur:"0:54",src:"media/worlds.mp4",full:"media/worlds_full.mp4",poster:"media/worlds.jpg",
+  idea:"The biggest night in esports lands in your building. Show what that looks like from the inside.",
+  made:"Venue film for the 2024 League of Legends World Championship finals at The O2, in collaboration with Riot Games — cosplay outside, queues building, the arena filling, the stage.",
+  note:""},
+
+ {id:"forza",year:"2025",client:"Virgin Media × Xbox UK",title:"Forza Motorsport 8 — Gamepad Launch",
+  roles:["Concept","Pitch","Shoot","Edit","Motion"],dur:"1:28",src:"media/forza.mp4",full:"media/forza_full.mp4",poster:"media/forza.jpg",
+  idea:"A launch film that feels like the room, not the press release.",
+  made:"Launch event for Forza Motorsport 8 at the Virgin Media Gamepad, run in collaboration with Xbox UK. Long-form, fully subtitled campaign cut — the anchor film of the activation.",note:""},
+
+ {id:"deportrio",year:"2025",client:"O2 × Baller League UK",title:"Deportrio — Matchday Reaction",
+  roles:["Production","Talent direction","Shoot","Edit"],dur:"0:30",src:"media/deportrio.mp4",full:"media/deportrio_full.mp4",poster:"media/deportrio.jpg",
+  idea:"Catch the reaction while the game is still in people's heads.",
+  made:"Pitchside reaction capture on matchday, cut fast against the Baller League x O2 broadcast package.",note:""},
+
+ {id:"gameday4",year:"2025",client:"O2 × Baller League UK",title:"Gameday Match Announcement",
+  roles:["Design","Motion","Templating"],dur:"0:09",src:"media/gameday4.mp4",full:"media/gameday4_full.mp4",poster:"media/gameday4.jpg",
+  idea:"Every fixture needs an announcement, every week, on time.",
+  made:"Templated announcement build — drop in the teams, the date and the channels, and it ships. Season two of the Baller League system.",
+  note:"One template, a whole season of fixtures."},
+
+ {id:"matchday",year:"2025",client:"O2 × Baller League UK",title:"Matchday Moments",
+  roles:["Shoot","Edit","Motion"],dur:"0:18",src:"media/matchday.mp4",full:"media/matchday_full.mp4",poster:"media/matchday.jpg",
+  idea:"The bits people actually clip and share.",
+  made:"Weekly matchday capture cut to the moments worth replaying, built on the Baller League x O2 broadcast package.",note:""},
+
+ {id:"mgrcomp",year:"2025",client:"O2 × Baller League UK",title:"Manager Playlists — Series Compilation",
+  roles:["Concept","Format design","Shoot","Edit","Motion"],dur:"0:35",src:"media/mgrcomp.mp4",full:"media/mgrcomp_full.mp4",poster:"media/mgrcomp.jpg",
+  idea:"One format, every manager, back to back.",
+  made:"Compilation cut of the manager playlist series showing how the format holds up across rotating talent.",note:""},
+
+ {id:"prioritytickets",year:"2025",client:"O2 Priority × Baller League UK",title:"Priority Tickets — Matchday Campaign",
+  roles:["Design","Art direction","Layout"],dur:"—",src:"",poster:"media/prioritytickets.jpg",
+  idea:"Make a ticket offer look like part of the league, not an ad bolted onto it.",
+  made:"Static campaign set built on the Baller League x O2 identity — torn-edge banner device, arena photography and the Priority lockup, versioned across multiple matchday executions.",
+  note:"Three versions from one template."},
+
+ {id:"o2recap",year:"2024",client:"The O2",title:"The O2 — Social Recap",
+  roles:["Concept","Shoot","Edit","Motion"],dur:"0:55",src:"media/o2recap.mp4",full:"media/o2recap_full.mp4",poster:"media/o2recap.jpg",
+  idea:"A year of the venue in under a minute.",
+  made:"",note:""},
+
+ {id:"wargasm",year:"2024",client:"O2 × Kerrang!",title:"Wargasm Blueroom Afterparty",
+  roles:["Shoot","Edit"],dur:"0:41",src:"media/wargasm.mp4",full:"media/wargasm_full.mp4",poster:"media/wargasm.jpg",
+  idea:"Capture a room that's barely lit and completely alive.",
+  made:"An exclusive afterparty show held in the O2 Blueroom, in collaboration with Kerrang!. Low-light live capture cut for pace and atmosphere.",note:""},
+
+ {id:"undisputed",year:"2025",client:"Virgin Media × Undisputed",title:"Undisputed — Shannon Ryan × Joel Beya",
+  roles:["Production","Talent direction","Shoot","Edit"],dur:"1:32",src:"media/undisputed.mp4",full:"media/undisputed_full.mp4",poster:"media/undisputed.jpg",
+  idea:"Two athletes, one boxing game, and a sofa at The O2.",
+  made:"Split-screen gameplay cut against talent reaction in the Gamepad lounge, opening outside The O2 itself.",note:""},
+
+ {id:"joelbeya",year:"2025",client:"Virgin Media × Gamepad",title:"Ultimate Gaming Draft",
+  roles:["Concept","Format design","Talent direction","Shoot","Edit","Motion"],dur:"1:22",src:"media/joelbeya.mp4",full:"media/joelbeya_full.mp4",poster:"media/joelbeya.jpg",
+  idea:"Pick your ultimate five-a-side — but the squad is drawn from every sport going.",
+  made:"Talent-led draft format built on animated player cards, with reaction captions carrying the pace. A simple premise designed to run again with any guest.",
+  note:"Format built to be repeated."},
+
+ {id:"wwe26",year:"2026",client:"Virgin Media × 2K",title:"WWE 2K26 × Jacob Fatu",
+  roles:["Production","Talent direction","Shoot","Edit"],dur:"1:17",src:"media/wwe26.mp4",full:"media/wwe26_full.mp4",poster:"media/wwe26.jpg",
+  idea:"Surprise two O2 customers with a gaming session they didn't see coming.",
+  made:"In collaboration with 2K Games. We surprised two O2 customers into their own gaming session with Jacob Fatu, playing WWE 2K26 — cut around the reactions rather than the gameplay.",
+  note:"Part of an ongoing series across 2K24, 2K25 and 2K26."},
+
+ {id:"zzz",year:"2025",client:"Virgin Media × Hoyoverse",title:"Zenless Zone Zero",
+  roles:["Concept","Shoot","Edit","Motion"],dur:"0:38",src:"media/zzz.mp4",full:"media/zzz_full.mp4",poster:"media/zzz.jpg",
+  idea:"Make a partner takeover feel like the game it's promoting.",
+  made:"Fast, punchy vertical cut of the in-venue experience.",note:""},
+
+ {id:"mgs",year:"2025",client:"Virgin Media × Konami",title:"Metal Gear Solid Delta",
+  roles:["Shoot","Edit","Motion"],dur:"0:54",src:"media/mgs.mp4",full:"media/mgs_full.mp4",poster:"media/mgs.jpg",
+  idea:"Celebrate the game's release, but make it ownable.",
+  made:"Rather than just covering the launch, I shot and cut it as a parody of the game's own authentic style, using elements taken from the game itself — so the piece showcases our gaming space as much as the title.",note:""},
+
+ {id:"finish",year:"2025",client:"O2 × England Rugby",title:"Finish The Sentence",
+  roles:["Concept","Format design","Talent direction","Shoot","Edit","Motion"],dur:"0:32",src:"media/finish.mp4",full:"media/finish_full.mp4",poster:"media/finish.jpg",
+  idea:"Hand two players an unfinished sentence and let the answer expose them.",
+  made:"Run with different England pairings across separate Six Nations fixtures. It follows a consistent branding design I created across both series, so everything stays fully ownable within the O2 brand.",
+  note:"Two episodes, different game each time."},
+
+ {id:"blindrank",year:"2025",client:"O2 × Red Roses",title:"Blind Ranking — Six Nations Dishes",
+  roles:["Concept","Format design","Shoot","Edit","Motion"],dur:"0:53",src:"media/blindrank.mp4",full:"media/blindrank_full.mp4",poster:"media/blindrank.jpg",
+  idea:"Rank the Six Nations. Not by rugby — by their national dishes.",
+  made:"Tournament rivalry in a piece that needs no match rights and no broadcast footage.",
+  note:"Format re-ran against a music line-up for O2 Concerts."},
+
+ {id:"wrwc",year:"2025",client:"O2 × Women's Rugby World Cup",title:"Fan Moments, Surprise & Delight",
+  roles:["Concept","Production","Shoot","Edit","Motion"],dur:"0:22",src:"media/wrwc.mp4",full:"media/wrwc_full.mp4",poster:"media/wrwc.jpg",
+  idea:"A home World Cup, and a chance to put fans inside it.",
+  made:"Surprise-and-delight capture around the final, plus flag bearer and ticketing motion assets.",
+  note:""},
+
+ {id:"baller",year:"2025",client:"O2 × Baller League UK",title:"Manager Playlists",
+  roles:["Concept","Format design","Shoot","Edit","Motion"],dur:"0:46",src:"media/baller.mp4",full:"media/baller_full.mp4",poster:"media/baller.jpg",
+  idea:"Hand a celebrity manager a mic and find out what's actually on their playlist.",
+  made:"Manager-fronted format built on the Baller League x O2 broadcast package, shot pitchside on matchday.",
+  note:"Ran across the season with rotating managers."},
+
+ {id:"trixie",year:"2025",client:"Virgin Media × Xbox",title:"Trixie Mattel — Toot or Boot",
+  roles:["Concept","Format design","Talent direction","Edit","Motion"],dur:"1:14",src:"media/trixie.mp4",full:"media/trixie_full.mp4",poster:"media/trixie.jpg",
+  idea:"Give a drag queen a verdict to deliver and get out of the way.",
+  made:"Part of a collaboration with Xbox for Forza Horizon 6. The talent was already streaming the game at the Virgin Media Gamepad, so I built a fun, ownable content series alongside their stream — a bespoke piece using our space rather than just covering the session.",
+  note:"Ran as a two-part series."},
+
+ {id:"yungblud",year:"2024",client:"O2",title:"O2 Asks — YUNGBLUD",
+  roles:["Format design","Talent direction","Shoot","Edit","Motion"],dur:"1:15",src:"media/yungblud.mp4",full:"media/yungblud_full.mp4",poster:"media/yungblud.jpg",
+  idea:"An artist interview that doesn't feel like an interview.",
+  made:"A chance to create ownable, bespoke social content in between the talent filming shoots for ITV Studio Sessions at the O2 Blueroom. Animated question cards, fully subtitled, built to run with any artist passing through.",
+  note:"Also ran with Cat Burns, Tom Walker and Jess Glynne."},
+
+ {id:"ballersys",year:"2025",client:"O2 × Baller League UK",title:"Season Content System",
+  roles:["Format design","Design","Motion","Templating"],dur:"0:06",src:"media/ballersys.mp4",full:"media/ballersys_full.mp4",poster:"media/ballersys.jpg",
+  idea:"A sponsorship that had to produce content every week of a season.",
+  made:"A reusable broadcast package and a production line on top of it — announcements, matchday moments, player features, head-to-head graphics, endframes.",
+  note:"The engine, not the highlight.",
+  system:["Match announcements","Matchday moments","Player — Feel Alive","Head-2-Head gfx","Season endframe","Gameday template"]}
+
+];
+
+const STRIP = ["Concept","Format design","Production","Direction","Talent","Shoot","Edit","Motion","Grade","Systems"];
+
+/* ================= BUILD ================= */
+const $=s=>document.querySelector(s);
+const find=id=>WORK.find(w=>w.id===id);
+const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* split text into revealing words */
+function kinetic(el, html){
+  el.innerHTML = html.split(" ").map(w=>`<span class="rv"><i>${w}</i></span>`).join(" ");
+  const bits = el.querySelectorAll(".rv > i");
+  bits.forEach((b,i)=> b.style.transitionDelay = (i*0.045)+"s");
+}
+kinetic($("#claim"), "I make brands <em>watchable.</em>");
+kinetic($("#sayT"), "Briefs in. <u>Films out.</u> Formats that keep running after I leave the room.");
+
+/* hero wall — 4 columns, from the independent WALL list */
+$("#wall").innerHTML=[0,1,2,3].map(ci=>{
+  const col=WALL.slice(ci*4,ci*4+4);
+  const cell=p=>`<div class="wall__t">${
+    p.src?`<video src="${p.src}" ${p.poster?`poster="${p.poster}"`:""} autoplay muted loop playsinline></video>`
+    :p.poster?`<img src="${p.poster}" alt="">`:`<span>${p.tag}</span>`}</div>`;
+  return `<div class="wall__c">${col.concat(col).map(cell).join("")}</div>`;
+}).join("");
+
+$("#strip").innerHTML = STRIP.concat(STRIP).map(s=>`<span>${s} &#9679;</span>`).join("");
+
+/* featured blocks */
+function featHTML(p,label){
+  return `<div class="feat__m">${
+    p.src?`<video src="${p.src}" ${p.poster?`poster="${p.poster}"`:""} autoplay muted loop playsinline></video>`
+    :p.poster?`<img src="${p.poster}" alt="">`
+    :`<div class="feat__ph"><span>Featured &mdash; add ${p.title}</span></div>`}</div>
+  <div class="feat__v"></div>
+  <div class="feat__c">
+    <div>
+      <p class="feat__n">${label} &middot; ${p.client} &middot; ${p.year}</p>
+      <h2 class="feat__t">${p.title}</h2>
+      <div class="feat__meta">${p.roles.map(r=>`<em>${r}</em>`).join("")}</div>
+    </div>
+    <button class="feat__go" data-id="${p.id}">Watch &rarr;</button>
+  </div>`;
+}
+/* body-of-work feature: one hero clip + a scope line + a strip of supporting clips */
+function featBodyHTML(mainId, supportIds, label, scope, overrideTitle){
+  const p = find(mainId);
+  const support = supportIds.map(find).filter(Boolean);
+  const mini = s => `<button class="feat__mini" data-id="${s.id}" aria-label="${s.title}">
+      ${s.poster ? `<img src="${s.poster}" alt="">` : `<b>${s.title}</b>`}
+    </button>`;
+  return `<div class="feat__m">${
+    p.src ? `<video src="${p.src}" ${p.poster?`poster="${p.poster}"`:""} autoplay muted loop playsinline></video>`
+    : p.poster ? `<img src="${p.poster}" alt="">`
+    : `<div class="feat__ph"><span>Featured &mdash; add ${p.title}</span></div>`}</div>
+  <div class="feat__v"></div>
+  <div class="feat__c">
+    <div>
+      <p class="feat__n">${label} &middot; ${p.client} &middot; ${p.year}</p>
+      <h2 class="feat__t">${overrideTitle || p.title}</h2>
+      ${scope ? `<p class="feat__scope">${scope}</p>` : ""}
+      <div class="feat__strip">${support.map(mini).join("")}</div>
+    </div>
+    <button class="feat__go" data-id="${mainId}">Watch &rarr;</button>
+  </div>`;
+}
+
+$("#fA").innerHTML = featHTML(find("forza"),"Featured — Launch event");
+$("#fB").innerHTML = featBodyHTML("tackle", [], "Featured", "", "England Rugby");
+$("#fC").innerHTML = featBodyHTML("baller", [], "Featured", "", "Baller League");
+
+/* chapters */
+function cardHTML(p){
+  return `<button class="card" data-id="${p.id}" aria-label="${p.client} — ${p.title}">
+    <div class="card__w">
+      ${p.src?`<video ${p.poster?`poster="${p.poster}"`:""} src="${p.src}" muted loop playsinline preload="none"></video>`
+        :p.poster?`<img src="${p.poster}" alt="">`
+        :`<div class="card__ph"><b>${p.client}</b><i>${p.title}</i></div>`}
+      <span class="card__v"></span><span class="card__d">${p.dur}</span>
+      <div class="card__i"><p class="card__c">${p.client}</p><h4 class="card__t">${p.title}</h4></div>
+    </div></button>`;
+}
+$("#chapters").innerHTML = CHAPTERS.map(c=>`
+  <section class="chap" id="ch-${c.id}">
+    <div class="chap__h">
+      <span class="chap__n">${c.n}</span>
+      <h3 class="chap__t">${c.title}</h3>
+      <p class="chap__s">${c.sub}</p>
+    </div>
+    <div class="rail">${c.ids.map(find).filter(Boolean).map(cardHTML).join("")}</div>
+  </section>`).join("");
+
+/* ================= MOTION ================= */
+const io = new IntersectionObserver(es=>{
+  es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } });
+},{threshold:.15});
+[...document.querySelectorAll(".card,.feat,#say,#claim")].forEach(el=>{
+  if(reduce) el.classList.add("in"); else io.observe(el);
+});
+if(!reduce) setTimeout(()=>$("#claim").classList.add("in"),900);
+
+/* viewport-aware playback */
+const vio = new IntersectionObserver(es=>{
+  es.forEach(e=>{
+    const v=e.target.querySelector("video"); if(!v) return;
+    if(e.isIntersecting) v.play().catch(()=>{}); else v.pause();
+  });
+},{threshold:.35});
+document.querySelectorAll(".card,.feat").forEach(c=>vio.observe(c));
+
+/* ================= MODAL ================= */
+const mod=$("#mod"),mv=$("#mv"),mt=$("#mt");
+function openCase(p){
+  const playSrc = p.full || p.src;
+  mv.className="mod__v"+(p.wide?" wide":"");
+  mv.innerHTML=playSrc?`<video src="${playSrc}" ${p.poster?`poster="${p.poster}"`:""} controls autoplay playsinline></video>`
+    :`<div class="mod__none"><span>&#9654;</span><p>Add video<br><b>${p.title}</b></p></div>`;
+  mt.innerHTML=`<p class="mod__c">${p.client} &middot; ${p.year}</p><h3>${p.title}</h3>
+    <div class="mod__r">${p.roles.map(r=>`<em>${r}</em>`).join("")}</div>
+    <dl><dt>The idea</dt><dd>${p.idea}</dd>${p.made?`<dt>How it was made</dt><dd>${p.made}</dd>`:""}
+    ${p.note?`<dt>Note</dt><dd>${p.note}</dd>`:""}</dl>
+    ${p.system?`<dt>Built for the season</dt><ul class="mod__sys">${p.system.map(x=>`<li>${x}</li>`).join("")}</ul>`:""}`;
+  mod.classList.add("open");document.body.classList.add("lock");$("#panel").focus();
+}
+function closeCase(){mod.classList.remove("open");document.body.classList.remove("lock");
+  setTimeout(()=>{mv.innerHTML="";},400);}
+document.addEventListener("click",e=>{
+  const t=e.target.closest("[data-id]"); if(!t) return;
+  const p=find(t.dataset.id); if(p) openCase(p);
+});
+$("#close").addEventListener("click",closeCase);
+mod.addEventListener("click",e=>{if(e.target===mod)closeCase();});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeCase();});
+
+/* ================= NAV ================= */
+let last=0;
+addEventListener("scroll",()=>{const y=scrollY;
+  $("#nav").classList.toggle("hide",y>last&&y>240&&!document.body.classList.contains("menu"));last=y;},{passive:true});
+$("#burger").addEventListener("click",()=>{
+  const o=document.body.classList.toggle("menu");
+  $("#burger").setAttribute("aria-expanded",o);document.body.classList.toggle("lock",o);});
+$("#menu").addEventListener("click",e=>{if(e.target.tagName==="A"){
+  document.body.classList.remove("menu","lock");$("#burger").setAttribute("aria-expanded",false);}});
+
+/* ================= CURSOR ================= */
+const cur=$("#cur");
+if(matchMedia("(hover:hover)").matches){
+  addEventListener("mousemove",e=>{cur.style.left=e.clientX+"px";cur.style.top=e.clientY+"px";});
+  document.addEventListener("mouseover",e=>{cur.classList.toggle("on",!!e.target.closest(".card,.feat"));});
+}
+
+/* ================= INTRO ================= */
+addEventListener("load",()=>setTimeout(()=>$("#intro").classList.add("done"),reduce?0:600));
+</script>
+</body>
 </html>
