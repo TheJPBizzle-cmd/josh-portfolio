@@ -315,7 +315,7 @@ body.menu .menu a:nth-child(3){transition-delay:.34s}
   <div class="wall" id="wall" aria-hidden="true"></div>
   <div class="hero__v"></div>
   <div class="hero__top">
-    <span>Creative producer</span>
+    <span>Content strategy &amp; creative direction</span>
     <span>Sport &middot; Gaming &middot; Culture</span>
   </div>
   <div class="hero__bot">
@@ -327,9 +327,9 @@ body.menu .menu a:nth-child(3){transition-delay:.34s}
 <!-- STATEMENT -->
 <section class="say" id="say">
   <h2 class="say__t" id="sayT"></h2>
-  <p class="say__sub">Six years in-house making work for O2 and Virgin Media &mdash; England Rugby and the
-    Red Roses, Baller League UK, and game launches with Xbox, 2K, Hoyoverse, Konami and Epic. Briefs
-    come in loose. Finished films go out.</p>
+  <p class="say__sub">In-house content, end to end &mdash; concept, shoot, edit, motion, and the graphic
+    system underneath that holds it together. England Rugby and the Red Roses, Baller League UK, and game
+    launches with Xbox, 2K, Hoyoverse, Konami and Epic.</p>
 </section>
 
 <div class="strip"><div class="strip__t" id="strip"></div></div>
@@ -350,13 +350,17 @@ body.menu .menu a:nth-child(3){transition-delay:.34s}
       <img src="media/josh.jpg" alt="Josh on set" onerror="this.style.display='none';this.parentNode.classList.add('empty')">
     </div>
     <div class="studio__b">
-      <h2 class="studio__x">Idea to delivery. <em>No handoffs.</em></h2>
-      <p>Most of this was concepted, pitched, shot, cut, graded and animated by me. That&rsquo;s not a
-         boast about being busy &mdash; it&rsquo;s why the work moves fast and holds together. No handoffs,
-         no edit queue, no drift between the idea that got signed off and the film that ships.</p>
-      <p>I build formats rather than one-offs: a structure with its own graphic language a brand can run
+      <h2 class="studio__x">Idea to delivery.</h2>
+      <p>I design formats, not one-offs &mdash; a structure with its own graphic language a brand can run
          again next week with different talent. Same job whether it&rsquo;s a World Cup, a game launch or
          a drag queen with an opinion.</p>
+      <p>Most of this was concepted, pitched, shot, cut, graded and animated by me. That matters less as
+         a boast than as a reason the work holds together: I know what a format costs to make before I
+         pitch it, and I can set the standard other people build to.</p>
+      <p>I&rsquo;ve led content teams, directed freelancers, steered agency partners, and built the shared
+         systems other people work to.</p>
+      <p>I build the tooling too &mdash; a shared caption system the social team works to, an agent that
+         reports back on trends and disruptors weekly, AI in storyboarding and motion.</p>
       <ul class="caps">
         <li>Concept</li><li>Format design</li><li>Production</li><li>Direction</li><li>Talent</li>
         <li>Shoot</li><li>Edit</li><li>Motion</li><li>Grade</li><li>Systems</li>
@@ -383,17 +387,26 @@ body.menu .menu a:nth-child(3){transition-delay:.34s}
 <script>
 /* ================= DATA ================= */
 const CHAPTERS = [
- {id:"gaming",n:"01",title:"Gaming & esports",sub:"Launches and live events with Xbox, 2K, Hoyoverse, Konami, Epic and Riot Games.",
-  ids:["showdown","worlds","wwe26","joelbeya","undisputed","zzz","mgs"]},
- {id:"sport",n:"02",title:"Sport",
+ {id:"gaming",n:"01",title:"Gaming & esports",
+  sub:"Launches and live events with Xbox, Hoyoverse, Konami, Epic and Riot Games.",
+  ids:["showdown","worlds","joelbeya","undisputed","zzz","mgs","forza"]},
+
+ {id:"wwe2k",n:"02",title:"Virgin Media × 2K Games",
+  sub:"A three-year partnership across WWE 2K24, 2K25 and 2K26 — talent formats, launch content and live activations at The O2.",
+  ids:["wwe25","wwe26","munya","wwe24"]},
+
+ {id:"sport",n:"03",title:"Sport",
   sub:"England Rugby and the Red Roses — one graphics language carried across the men's and women's game.",
-  ids:["finish","blindrank","wrwc"]},
- {id:"ballerleague",n:"03",title:"Baller League",
-  sub:"A season-long O2 sponsorship — talent formats, matchday coverage, design and templated builds.",
-  ids:["mgrcomp","deportrio","matchday","gameday4","prioritytickets"]},
- {id:"culture",n:"04",title:"Music & culture",sub:"Artists, drag, and an arena that never stops.",
+  ids:["finish","blindrank","tackle","wrwc"]},
+
+ {id:"ballerleague",n:"04",title:"Baller League",
+  sub:"A season-long O2 sponsorship — talent formats, matchday coverage and campaign design.",
+  ids:["deportrio","mgrcomp","matchday","prioritytickets"]},
+
+ {id:"culture",n:"05",title:"Music & culture",sub:"Artists, drag, and an arena that never stops.",
   ids:["trixie","yungblud","o2recap","wargasm"]},
- {id:"systems",n:"05",title:"Systems & craft",sub:"The engines behind the output.",
+
+ {id:"systems",n:"06",title:"Systems & craft",sub:"The engines behind the output.",
   ids:["ballersys","gameday4"]}
 ];
 
@@ -432,24 +445,24 @@ const WORK = [
  {id:"showdown",year:"2024",client:"O2 × Epic Games",title:"Showdown at The O2",
   roles:["Concept","Direction","Shoot","Edit","Motion"],dur:"0:56",src:"media/showdown.mp4",full:"media/showdown_full.mp4",poster:"media/showdown.jpg",
   idea:"One night, one arena, one shot at the film.",
-  made:"A huge tournament hosted at The O2 in collaboration with Epic Games, bringing together major creators — Angry Ginge, Aitch, AJ Tracey, Vikkstar — alongside Fortnite pro players and some lucky fans to see who would be crowned winner. Shot the room end to end and cut to an agony-to-glory rhythm landing on the win.",
+  made:"A huge tournament hosted at The O2 in collaboration with Epic Games, bringing together major creators — Angry Ginge, Aitch, AJ Tracey, Vikkstar — alongside Fortnite pro players and some lucky fans to see who would be crowned winner. Shot the room end to end. The film lands where the night landed.",
   note:"Fortnite Remix Chapter 2 launch event."},
 
  {id:"worlds",year:"2024",client:"The O2 × Riot Games",title:"2024 League of Legends World Championship",
   roles:["Concept","Shoot","Edit","Motion"],dur:"0:54",src:"media/worlds.mp4",full:"media/worlds_full.mp4",poster:"media/worlds.jpg",
   idea:"The biggest night in esports lands in your building. Show what that looks like from the inside.",
-  made:"Venue film for the 2024 League of Legends World Championship finals at The O2, in collaboration with Riot Games — cosplay outside, queues building, the arena filling, the stage.",
+  made:"The 2024 League of Legends World Championship finals at The O2, with Riot Games — cosplay outside, queues building, the arena filling, the stage.",
   note:""},
 
  {id:"forza",year:"2025",client:"Virgin Media × Xbox UK",title:"Forza Motorsport 8 — Gamepad Launch",
   roles:["Concept","Pitch","Shoot","Edit","Motion"],dur:"1:28",src:"media/forza.mp4",full:"media/forza_full.mp4",poster:"media/forza.jpg",
   idea:"A launch film that feels like the room, not the press release.",
-  made:"Launch event for Forza Motorsport 8 at the Virgin Media Gamepad, run in collaboration with Xbox UK. Long-form, fully subtitled campaign cut — the anchor film of the activation.",note:""},
+  made:"Launch event for Forza Motorsport 8 at the Virgin Media Gamepad with Xbox UK. The anchor film of the activation — built to carry the room, not the press release.",note:""},
 
  {id:"deportrio",year:"2025",client:"O2 × Baller League UK",title:"Deportrio — Matchday Reaction",
   roles:["Production","Talent direction","Shoot","Edit"],dur:"0:30",src:"media/deportrio.mp4",full:"media/deportrio_full.mp4",poster:"media/deportrio.jpg",
   idea:"Catch the reaction while the game is still in people's heads.",
-  made:"Pitchside reaction capture on matchday, cut fast against the Baller League x O2 broadcast package.",note:""},
+  made:"Post-match reaction with Gary Lineker, Alan Shearer and Micah Richards. I designed the Baller League overlay to carry match highlights alongside the interview, so one build does both jobs.",note:""},
 
  {id:"gameday4",year:"2025",client:"O2 × Baller League UK",title:"Gameday Match Announcement",
   roles:["Design","Motion","Templating"],dur:"0:09",src:"media/gameday4.mp4",full:"media/gameday4_full.mp4",poster:"media/gameday4.jpg",
@@ -476,23 +489,41 @@ const WORK = [
  {id:"o2recap",year:"2024",client:"The O2",title:"The O2 — Social Recap",
   roles:["Concept","Shoot","Edit","Motion"],dur:"0:55",src:"media/o2recap.mp4",full:"media/o2recap_full.mp4",poster:"media/o2recap.jpg",
   idea:"A year of the venue in under a minute.",
-  made:"",note:""},
+  made:"A year of The O2's social and events in one cut, made with the arena team — the moments carried alongside the numbers behind them.",note:""},
 
  {id:"wargasm",year:"2024",client:"O2 × Kerrang!",title:"Wargasm Blueroom Afterparty",
   roles:["Shoot","Edit"],dur:"0:41",src:"media/wargasm.mp4",full:"media/wargasm_full.mp4",poster:"media/wargasm.jpg",
   idea:"Capture a room that's barely lit and completely alive.",
-  made:"An exclusive afterparty show held in the O2 Blueroom, in collaboration with Kerrang!. Low-light live capture cut for pace and atmosphere.",note:""},
+  made:"An exclusive afterparty in the O2 Blueroom with Kerrang!. Barely any light, no second chances — shot to feel like being in the room.",note:""},
 
  {id:"undisputed",year:"2025",client:"Virgin Media × Undisputed",title:"Undisputed — Shannon Ryan × Joel Beya",
   roles:["Production","Talent direction","Shoot","Edit"],dur:"1:32",src:"media/undisputed.mp4",full:"media/undisputed_full.mp4",poster:"media/undisputed.jpg",
   idea:"Two athletes, one boxing game, and a sofa at The O2.",
-  made:"Split-screen gameplay cut against talent reaction in the Gamepad lounge, opening outside The O2 itself.",note:""},
+  made:"Boxing champion Shannon Ryan put under the grill by Joel Beya while they play Plaion's Undisputed at the Gamepad. The match gives the interview cover — his story comes out while he's playing rather than being asked for it.",note:""},
 
  {id:"joelbeya",year:"2025",client:"Virgin Media × Gamepad",title:"Ultimate Gaming Draft",
   roles:["Concept","Format design","Talent direction","Shoot","Edit","Motion"],dur:"1:22",src:"media/joelbeya.mp4",full:"media/joelbeya_full.mp4",poster:"media/joelbeya.jpg",
   idea:"Pick your ultimate five-a-side — but the squad is drawn from every sport going.",
   made:"Talent-led draft format built on animated player cards, with reaction captions carrying the pace. A simple premise designed to run again with any guest.",
   note:"Format built to be repeated."},
+
+ {id:"wwe25",year:"2025",client:"Virgin Media × 2K",title:"WWE 2K25 — Mystery Tag",
+  roles:["Concept","Format design","Talent direction","Shoot","Edit","Motion"],dur:"1:14",src:"media/wwe25.mp4",full:"media/wwe25_full.mp4",poster:"media/wwe25.jpg",
+  idea:"Tell two winners they're playing our in-house gamer. They're not.",
+  made:"Two wrestlers, one day, and a meet-and-greet on the table. I pitched a surprise instead — Johnny Gargano and Tommaso Ciampa playing from the next room, walking in once it's done. The reveal holds for fifty seconds.",
+  note:"85k views. Part of an ESA Award-nominated activation."},
+
+ {id:"munya",year:"2024",client:"Virgin Media × 2K",title:"Munya × WWE Q&A",
+  roles:[],dur:"1:30",src:"media/munya.mp4",full:"media/munya_full.mp4",poster:"media/munya.jpg",
+  idea:"Give Munya the questions and get out of the way.",
+  made:"Wrote the question set so his answers cover WWE, the game and the Gamepad without any of it sounding like a plug. He does the rest.",
+  note:""},
+
+ {id:"wwe24",year:"2024",client:"Virgin Media × 2K",title:"WWE 2K24 — Gamepad",
+  roles:[],dur:"1:05",src:"media/wwe24.mp4",full:"media/wwe24_full.mp4",poster:"media/wwe24.jpg",
+  idea:"The whole day, in a minute.",
+  made:"Wrap reel for the WWE 2K24 activation — Munya playing against two wrestlers, streamers like Manny through the Gamepad, the floor running all day. The Gamepad is the product as much as the game is.",
+  note:""},
 
  {id:"wwe26",year:"2026",client:"Virgin Media × 2K",title:"WWE 2K26 × Jacob Fatu",
   roles:["Production","Talent direction","Shoot","Edit"],dur:"1:17",src:"media/wwe26.mp4",full:"media/wwe26_full.mp4",poster:"media/wwe26.jpg",
@@ -503,7 +534,7 @@ const WORK = [
  {id:"zzz",year:"2025",client:"Virgin Media × Hoyoverse",title:"Zenless Zone Zero",
   roles:["Concept","Shoot","Edit","Motion"],dur:"0:38",src:"media/zzz.mp4",full:"media/zzz_full.mp4",poster:"media/zzz.jpg",
   idea:"Make a partner takeover feel like the game it's promoting.",
-  made:"Fast, punchy vertical cut of the in-venue experience.",note:""},
+  made:"A Zenless Zone Zero takeover of the Gamepad with Hoyoverse and Xbox UK — cosplayers, creators and themed gachapon machines. The room was dressed as the game, so the film just had to show it.",note:""},
 
  {id:"mgs",year:"2025",client:"Virgin Media × Konami",title:"Metal Gear Solid Delta",
   roles:["Shoot","Edit","Motion"],dur:"0:54",src:"media/mgs.mp4",full:"media/mgs_full.mp4",poster:"media/mgs.jpg",

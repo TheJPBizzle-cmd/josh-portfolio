@@ -11,3 +11,6 @@ desktop.ini
 # Internal working docs — must never be published with the site
 *brief*.md
 *-revision-*.md
+
+# Wrangler local state
+.wrangler/
