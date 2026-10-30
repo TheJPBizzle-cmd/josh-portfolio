@@ -181,8 +181,10 @@ body.menu .menu a:nth-child(3){transition-delay:.34s}
 .chap__t{font-family:var(--d);font-size:clamp(19px,2.6vw,32px);letter-spacing:-.03em;margin:0}
 .chap__s{font-size:13px;color:var(--dim);margin:0 0 0 auto;max-width:40ch;text-align:right}
 .rail{display:flex;gap:clamp(8px,1vw,14px);overflow-x:auto;scroll-snap-type:x mandatory;
-  padding:20px var(--pad) 8px;scrollbar-width:none}
-.rail::-webkit-scrollbar{display:none}
+  padding:20px var(--pad) 18px;scrollbar-width:thin;scrollbar-color:var(--acid) var(--line)}
+.rail::-webkit-scrollbar{height:4px}
+.rail::-webkit-scrollbar-track{background:var(--line);border-radius:4px;margin:0 var(--pad)}
+.rail::-webkit-scrollbar-thumb{background:var(--acid);border-radius:4px}
 .card{flex:0 0 clamp(184px,20vw,250px);text-align:left;scroll-snap-align:start;padding:0;
   opacity:0;transform:translateY(26px);transition:opacity .7s var(--e),transform .7s var(--e)}
 .card.in{opacity:1;transform:none}
@@ -389,7 +391,7 @@ body.menu .menu a:nth-child(3){transition-delay:.34s}
 const CHAPTERS = [
  {id:"gaming",n:"01",title:"Gaming & esports",
   sub:"Launches and live events with Xbox, Hoyoverse, Konami, Epic and Riot Games.",
-  ids:["showdown","worlds","trixie","zzz","forza","mgs","undisputed","joelbeya"]},
+  ids:["showdown","worlds","trixie","zzz","forza","forzatourney","mgs","undisputed","faceoff","joelbeya"]},
 
  {id:"wwe2k",n:"02",title:"Virgin Media × 2K Games",
   sub:"A three-year partnership across WWE 2K24, 2K25 and 2K26: talent formats, launch content and live activations at The O2.",
@@ -500,6 +502,18 @@ const WORK = [
   roles:["Production","Talent direction","Shoot","Edit"],dur:"1:32",src:"media/undisputed.mp4",full:"media/undisputed_full.mp4",poster:"media/undisputed.jpg",
   idea:"Two athletes, one boxing game, and a sofa at The O2.",
   made:"Boxing champion Shannon Ryan put under the grill by Joel Beya while they play Plaion's Undisputed at the Gamepad. The match gives the interview cover: his story comes out while he's playing rather than being asked for it.",note:""},
+
+ {id:"faceoff",year:"2025",client:"Virgin Media × Gamepad",title:"Shannon Ryan: Fighter Face-Off",
+  roles:["Concept","Format design","Talent direction","Shoot","Edit","Motion"],dur:"1:15",src:"media/faceoff.mp4",full:"media/faceoff_full.mp4",poster:"media/faceoff.jpg",
+  idea:"Ask a boxing champion to call the fights that can never happen.",
+  made:"Shannon Ryan picks winners in dream matchups between real boxers and video game fighters: Tyson against Balrog, Ali against Little Mac, Fury against King. Each bout plays out as pixel-art sprites with a health bar and a winner card, and the last one puts Shannon in the ring against Chun-Li.",
+  note:""},
+
+ {id:"forzatourney",year:"2025",client:"Virgin Media × Xbox",title:"Forza Gamepad Tournament",
+  roles:["Concept","Production","Shoot","Edit","Motion"],dur:"0:35",src:"media/forzatourney.mp4",full:"media/forzatourney_full.mp4",poster:"media/forzatourney.jpg",
+  idea:"Turn the Gamepad floor into race day.",
+  made:"A community Forza tournament at the Virgin Media Gamepad with Xbox: racers locked in on the rigs, the crowd behind them, and a winner walking out with the prize. Shot on the floor and cut to the pace of the racing.",
+  note:""},
 
  {id:"joelbeya",year:"2025",client:"Virgin Media × Gamepad",title:"Ultimate Gaming Draft",
   roles:["Concept","Format design","Talent direction","Shoot","Edit","Motion"],dur:"1:22",src:"media/joelbeya.mp4",full:"media/joelbeya_full.mp4",poster:"media/joelbeya.jpg",
