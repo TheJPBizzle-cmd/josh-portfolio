@@ -14,3 +14,7 @@ desktop.ini
 
 # Wrangler local state
 .wrangler/
+
+# Source masters and local version backups (not part of the site)
+New videos/
+index.v*.html

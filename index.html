@@ -11,7 +11,7 @@
 
 <!--
   ============================================================
-  JOSH — PORTFOLIO v7
+  JOSH — PORTFOLIO v8
   Single file. No build. Open in a browser.
 
   MEDIA: /media folder next to this file.
@@ -320,7 +320,7 @@ body.menu .menu a:nth-child(3){transition-delay:.34s}
   </div>
   <div class="hero__bot">
     <h1 class="hero__claim" id="claim"></h1>
-    <a class="hero__scroll" href="#work"><b>&darr;</b> 16 projects</a>
+    <a class="hero__scroll" href="#work"><b>&darr;</b> Selected work</a>
   </div>
 </header>
 
@@ -389,19 +389,19 @@ body.menu .menu a:nth-child(3){transition-delay:.34s}
 const CHAPTERS = [
  {id:"gaming",n:"01",title:"Gaming & esports",
   sub:"Launches and live events with Xbox, Hoyoverse, Konami, Epic and Riot Games.",
-  ids:["showdown","worlds","joelbeya","undisputed","zzz","mgs","forza","trixie"]},
+  ids:["showdown","worlds","trixie","zzz","forza","mgs","undisputed","joelbeya"]},
 
  {id:"wwe2k",n:"02",title:"Virgin Media × 2K Games",
   sub:"A three-year partnership across WWE 2K24, 2K25 and 2K26: talent formats, launch content and live activations at The O2.",
   ids:["wwe25","wwe26","munya","wwe24"]},
 
  {id:"sport",n:"03",title:"Sport",
-  sub:"England Rugby and the Red Roses. One graphics language carried across the men's and women's game.",
-  ids:["finish","blindrank","tackle","wrwc"]},
+  sub:"England Rugby, the Red Roses, Belfast Giants and Champions League nights at Anfield. Original formats, built to repeat.",
+  ids:["feastorfoe","readmylips","finish","tackle","blindrank","belfast","oppo","wrwc"]},
 
  {id:"ballerleague",n:"04",title:"Baller League",
   sub:"A season-long O2 sponsorship: talent formats, matchday coverage and campaign design.",
-  ids:["deportrio","mgrcomp","matchday","prioritytickets"]},
+  ids:["baller","deportrio","mgrcomp","matchday","prioritytickets"]},
 
  {id:"culture",n:"05",title:"Music & culture",sub:"Artists, drag, and an arena that never stops.",
   ids:["yungblud","o2recap","wargasm"]},
@@ -422,14 +422,14 @@ const WALL = [
   {src:"media/forza.mp4",          poster:"media/forza.jpg",          tag:"Forza Launch"},
   {src:"media/trixie.mp4",         poster:"media/trixie.jpg",         tag:"Toot or Boot"},
   {src:"media/wall_wwe24.mp4",     poster:"media/wall_wwe24.jpg",     tag:"WWE 2K24"},
-  {src:"media/blindrank.mp4",      poster:"media/blindrank.jpg",      tag:"Blind Ranking"},
+  {src:"media/readmylips.mp4",     poster:"media/readmylips.jpg",     tag:"Read My Lips"},
 
-  {src:"media/wrwc.mp4",           poster:"media/wrwc.jpg",           tag:"WRWC"},
+  {src:"media/belfast.mp4",        poster:"media/belfast.jpg",        tag:"Belfast Giants"},
   {src:"media/baller.mp4",         poster:"media/baller.jpg",         tag:"Manager Playlists"},
   {src:"media/wall_engfiji.mp4",   poster:"media/wall_engfiji.jpg",   tag:"England v Fiji"},
   {src:"media/yungblud.mp4",       poster:"media/yungblud.jpg",       tag:"O2 Asks"},
 
-  {src:"media/finish.mp4",         poster:"media/finish.jpg",         tag:"Finish The Sentence"},
+  {src:"media/feastorfoe.mp4",     poster:"media/feastorfoe.jpg",     tag:"Feast or Foe"},
   {src:"media/wall_munya.mp4",     poster:"media/wall_munya.jpg",     tag:"Munya: WWE Q&A"},
   {src:"media/wall_undisputed.mp4",poster:"media/wall_undisputed.jpg",tag:"Undisputed × Gamepad"},
   {src:"media/wwe26.mp4",          poster:"media/wwe26.jpg",          tag:"WWE 2K26"}
@@ -559,6 +559,30 @@ const WORK = [
   made:"Surprise-and-delight capture around the final, plus flag bearer and ticketing motion assets.",
   note:""},
 
+ {id:"feastorfoe",year:"2025",client:"O2 × Red Roses",title:"Feast or Foe",
+  roles:["Concept","Format design","Talent direction","Shoot","Edit","Motion"],dur:"1:03",src:"media/feastorfoe.mp4",full:"media/feastorfoe_full.mp4",poster:"media/feastorfoe.jpg",
+  idea:"Get a question about your next World Cup opponent wrong, and you eat their national snack.",
+  made:"Hot Ones meets Snack Wars, built around the Red Roses' home World Cup fixtures. One table, one cloche, three players and a question about the country they face next. The wrong answer is the payoff: here a field-goal debate ends in sour pickle sweets.",
+  note:"Episode four of a series run across the tournament."},
+
+ {id:"readmylips",year:"2025",client:"O2 × Red Roses",title:"Read My Lips",
+  roles:["Concept","Format design","Talent direction","Shoot","Edit","Motion"],dur:"1:03",src:"media/readmylips.mp4",full:"media/readmylips_full.mp4",poster:"media/readmylips.jpg",
+  idea:"One player reads a name. Two players in headphones have to lip-read it.",
+  made:"A lip-reading challenge with a live scoreboard, player headshots and a name banner on every answer, so the score carries the edit with no voiceover. The category rotates each episode: this one ran on music artists, from Olivia Dean to Westlife.",
+  note:"Built to run with any three players and any category."},
+
+ {id:"belfast",year:"2025",client:"O2 × Belfast Giants",title:"Belfast Giants: Opening Night",
+  roles:["Concept","Production","Shoot","Edit","Motion"],dur:"0:42",src:"media/belfast.mp4",full:"media/belfast_full.mp4",poster:"media/belfast.jpg",
+  idea:"A new sponsorship's first night on the ice. Make it feel like you were there.",
+  made:"Wrap reel of the season opener after O2 became the Giants' mainline sponsor, a deal that grew out of the O2 Belfast venue partnership. Fans arriving, the pyro walkout, puck drop and the full-time salute, shot from the tunnel to the stands.",
+  note:""},
+
+ {id:"oppo",year:"2025",client:"O2 Priority × OPPO",title:"Champions League Nights at Anfield",
+  roles:["Concept","Production","Shoot","Edit","Motion"],dur:"1:01",src:"media/oppo.mp4",full:"media/oppo_full.mp4",poster:"media/oppo.jpg",
+  idea:"Sell a prize draw by living the prize.",
+  made:"For a Priority app competition offering Champions League hospitality: Liverpool v Atlético Madrid, from the Shankly Gates and the team bus to the Champions Club lounge and a late winner. OPPO, an official partner of the competition, is written into the film with its phone shooting the action rather than bolted on as a logo.",
+  note:""},
+
  {id:"baller",year:"2025",client:"O2 × Baller League UK",title:"Manager Playlists",
   roles:["Concept","Format design","Shoot","Edit","Motion"],dur:"0:46",src:"media/baller.mp4",full:"media/baller_full.mp4",poster:"media/baller.jpg",
   idea:"Hand a celebrity manager a mic and find out what's actually on their playlist.",
@@ -653,7 +677,7 @@ function featBodyHTML(mainId, supportIds, label, scope, overrideTitle){
 }
 
 $("#fA").innerHTML = featHTML(find("forza"),"Featured: Launch event");
-$("#fB").innerHTML = featBodyHTML("tackle", [], "Featured", "", "England Rugby");
+$("#fB").innerHTML = featBodyHTML("feastorfoe", [], "Featured", "", "England Rugby");
 $("#fC").innerHTML = featBodyHTML("baller", [], "Featured", "", "Baller League");
 
 /* chapters */
